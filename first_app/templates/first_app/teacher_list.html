@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Teacher list ({{ teachers|length }})</h1>
+    <p><a href="{% url 'first_app:home' %}">Home</a></p>
+    {# teachers from views.py context_object_name= #}
+    <ul>
+        {% for teacher in teachers %}
+            <li>
+                {{ teacher.name }} - {{ teacher.subject }}
+                <!--
+                [<a href="/first_app/teacher_detail/{{ teacher.id }}">Detail</a>]
+                [<a href="/first_app/teacher_update/{{ teacher.id }}" class="text-success">Update</a>]
+                [<a href="/first_app/teacher_delete/{{ teacher.id }}" class="text-danger">Delete</a>]
+                -->
+
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'first_app:home' %}">Homepage</a>
+{% endblock %}
