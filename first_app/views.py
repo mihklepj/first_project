@@ -19,6 +19,10 @@ class TeacherListView(ListView):
     queryset = Teacher.objects.order_by('name')
     context_object_name = 'teachers'
 
+class SubjectListView(ListView):
+    model = Subject
+    queryset = Subject.objects.order_by('name')
+    context_object_name = 'subjects'
 
 class StudentDetailView(DetailView):
     # Return only one model entry
@@ -39,6 +43,11 @@ class TeacherCreateView(CreateView):
     fields = '__all__'
     success_url = reverse_lazy('first_app:teacher_list')
 
+class SubjectCreateView(CreateView):
+    template_name = 'first_app/subject_form_create.html'
+    model = Subject
+    fields = '__all__'
+    success_url = reverse_lazy('first_app:subject_list')
 
 class StudentUpdateView(UpdateView):
     # model_form.html => student_form.html
@@ -54,3 +63,13 @@ class StudentDeleteView(DeleteView):
     model = Student
     # redirect after successful delete
     success_url = reverse_lazy('first_app:student_list')
+
+class SubjectDeleteView(DeleteView):
+    model = Subject
+    success_url = reverse_lazy('first_app:subject_list')
+
+
+class SubjectUpdateView(UpdateView):
+    model = Subject
+    fields = ['name']
+    success_url = reverse_lazy('first_app:subject_list')
