@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Homepage</h1>
+    <br>
+    <p><a href="{% url 'first_app:student_list' %}">Student List</a></p>
+    <p><a href="{% url 'first_app:student_create' %}">Add New Student</a></p>
+{% endblock %}

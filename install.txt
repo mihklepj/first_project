@@ -1,1 +1,1 @@
-pip install -r requires.txt
+pip install -r required.txt
